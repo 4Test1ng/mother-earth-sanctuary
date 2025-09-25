@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Clock, DollarSign, Star, Heart, Zap, Shield, Calendar, Phone } from "lucide-react";
@@ -143,14 +143,18 @@ const ServiceDetail = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
                 size="lg"
+                asChild
                 className="bg-terracotta hover:bg-terracotta/90 text-terracotta-foreground font-semibold px-8 shadow-medium hover:shadow-strong transition-smooth hover-lift"
               >
-                <Calendar className="mr-2 h-5 w-5" />
-                Book This Service
+                <Link to="/contact">
+                  <Calendar className="mr-2 h-5 w-5" />
+                  Book This Service
+                </Link>
               </Button>
               <Button 
                 variant="outline"
                 size="lg"
+                onClick={() => window.open('https://wa.me/233543800082?text=I have a question about ' + service.title, '_blank')}
                 className="border-2 border-teal text-teal hover:bg-teal hover:text-teal-foreground font-semibold px-8 transition-smooth"
               >
                 <Phone className="mr-2 h-5 w-5" />
@@ -245,9 +249,10 @@ const ServiceDetail = () => {
                   toward pain-free living and holistic wellness.
                 </p>
                 <Button 
+                  asChild
                   className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-semibold shadow-soft hover:shadow-medium transition-smooth"
                 >
-                  Schedule Your Session Now
+                  <Link to="/contact">Schedule Your Session Now</Link>
                 </Button>
               </div>
             </div>

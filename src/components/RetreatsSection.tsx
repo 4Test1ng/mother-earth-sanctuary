@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Calendar, MapPin, Users, Sunrise } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const RetreatsSection = () => {
   const upcomingRetreats = [
@@ -98,6 +99,7 @@ const RetreatsSection = () => {
                 {/* Book Now Button */}
                 <Button 
                   className="w-full bg-teal hover:bg-teal/90 text-teal-foreground font-semibold shadow-soft hover:shadow-medium transition-smooth"
+                  onClick={() => window.open('https://wa.me/233543800082?text=I would like to reserve my spot for the ' + retreat.title, '_blank')}
                 >
                   Reserve Your Spot
                 </Button>
@@ -118,13 +120,15 @@ const RetreatsSection = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button 
               size="lg"
+              asChild
               className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 shadow-soft hover:shadow-medium transition-smooth hover-lift"
             >
-              View All Retreats
+              <Link to="/services">View All Retreats</Link>
             </Button>
             <Button 
               variant="outline"
               size="lg"
+              onClick={() => window.open('https://wa.me/233543800082?text=I am interested in custom retreats', '_blank')}
               className="border-2 border-teal text-teal hover:bg-teal hover:text-teal-foreground font-semibold px-8 transition-smooth"
             >
               Contact for Custom Retreats

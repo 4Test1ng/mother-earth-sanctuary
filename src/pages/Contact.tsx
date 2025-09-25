@@ -122,6 +122,7 @@ const Contact = () => {
               {/* Quick Actions */}
               <div className="space-y-3">
                 <Button 
+                  onClick={() => window.open('https://wa.me/233543800082?text=I would like to book an appointment', '_blank')}
                   className="w-full bg-terracotta hover:bg-terracotta/90 text-terracotta-foreground font-semibold shadow-soft hover:shadow-medium transition-smooth justify-start"
                 >
                   <Calendar className="mr-3 h-5 w-5" />
@@ -130,6 +131,7 @@ const Contact = () => {
                 
                 <Button 
                   variant="outline"
+                  onClick={() => window.open('https://wa.me/233543800082', '_blank')}
                   className="w-full border-teal text-teal hover:bg-teal hover:text-teal-foreground font-semibold transition-smooth justify-start"
                 >
                   <MessageCircle className="mr-3 h-5 w-5" />
@@ -138,6 +140,7 @@ const Contact = () => {
                 
                 <Button 
                   variant="outline" 
+                  onClick={() => window.open('https://www.google.com/maps/dir//Dzorwulu+Pillar+2,+Aunty+Mary+Street,+Accra,+Ghana', '_blank')}
                   className="w-full border-accent text-accent hover:bg-accent hover:text-accent-foreground font-semibold transition-smooth justify-start"
                 >
                   <Navigation className="mr-3 h-5 w-5" />
@@ -166,8 +169,10 @@ const Contact = () => {
                       Full Name *
                     </label>
                     <Input 
+                      name="name"
                       placeholder="Your full name"
                       className="bg-background border-input"
+                      required
                     />
                   </div>
                   
@@ -176,9 +181,11 @@ const Contact = () => {
                       Email Address *
                     </label>
                     <Input 
+                      name="email"
                       type="email"
                       placeholder="your@email.com"
                       className="bg-background border-input"
+                      required
                     />
                   </div>
                 </div>
@@ -190,6 +197,7 @@ const Contact = () => {
                       Phone Number
                     </label>
                     <Input 
+                      name="phone"
                       placeholder="+233 xxx xxx xxx"
                       className="bg-background border-input"
                     />
@@ -199,7 +207,7 @@ const Contact = () => {
                     <label className="font-body text-sm font-medium text-foreground">
                       Service Interest
                     </label>
-                    <select className="w-full p-3 bg-background border border-input rounded-md font-body text-sm">
+                    <select name="service" className="w-full p-3 bg-background border border-input rounded-md font-body text-sm">
                       <option value="">Select a service</option>
                       <option value="deep-tissue">Deep Tissue Massage</option>
                       <option value="reflexology">Reflexology</option>
@@ -217,8 +225,10 @@ const Contact = () => {
                     Subject *
                   </label>
                   <Input 
+                    name="subject"
                     placeholder="What can we help you with?"
                     className="bg-background border-input"
+                    required
                   />
                 </div>
 
@@ -228,15 +238,36 @@ const Contact = () => {
                     Message *
                   </label>
                   <Textarea 
+                    name="message"
                     placeholder="Tell us more about what you're looking for..."
                     rows={5}
                     className="bg-background border-input resize-none"
+                    required
                   />
                 </div>
 
                 {/* Submit Button */}
                 <Button 
                   type="submit"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    // Get form data
+                    const form = (e.target as HTMLElement).closest('form') as HTMLFormElement;
+                    if (!form) return;
+                    
+                    const formData = new FormData(form);
+                    const name = formData.get('name') || '';
+                    const email = formData.get('email') || '';
+                    const subject = formData.get('subject') || '';
+                    const message = formData.get('message') || '';
+                    const service = formData.get('service') || '';
+                    
+                    // Create WhatsApp message
+                    const whatsappMessage = `Hello! I would like to get in touch.%0A%0AName: ${name}%0AEmail: ${email}%0ASubject: ${subject}%0AService Interest: ${service || 'Not specified'}%0A%0AMessage: ${message}`;
+                    
+                    // Open WhatsApp
+                    window.open(`https://wa.me/233543800082?text=${whatsappMessage}`, '_blank');
+                  }}
                   className="w-full bg-teal hover:bg-teal/90 text-teal-foreground font-semibold py-3 shadow-soft hover:shadow-medium transition-smooth"
                 >
                   <Send className="mr-2 h-5 w-5" />
@@ -279,6 +310,7 @@ const Contact = () => {
                 </p>
                 <Button 
                   variant="outline" 
+                  onClick={() => window.open('https://www.google.com/maps/dir//Dzorwulu+Pillar+2,+Aunty+Mary+Street,+Accra,+Ghana', '_blank')}
                   className="mt-4 border-teal text-teal hover:bg-teal hover:text-teal-foreground"
                 >
                   <Navigation className="mr-2 h-4 w-4" />

@@ -61,9 +61,10 @@ const Header = () => {
           <div className="hidden md:flex">
             <Button 
               variant="default"
+              asChild
               className="bg-terracotta hover:bg-terracotta/90 text-terracotta-foreground font-medium shadow-soft hover:shadow-medium transition-smooth"
             >
-              Book Now
+              <Link to="/contact">Book Now</Link>
             </Button>
           </div>
 
@@ -101,9 +102,10 @@ const Header = () => {
               <div className="px-3 pt-2">
                 <Button 
                   variant="default"
+                  asChild
                   className="w-full bg-terracotta hover:bg-terracotta/90 text-terracotta-foreground"
                 >
-                  Book Now
+                  <Link to="/contact">Book Now</Link>
                 </Button>
               </div>
             </nav>

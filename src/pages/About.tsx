@@ -1,6 +1,7 @@
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Heart, Award, Users, Leaf, Star, Target } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const About = () => {
   return (
@@ -272,27 +273,28 @@ const About = () => {
       <section className="py-16 bg-gradient-accent text-center">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mx-auto">
-            <h2 className="font-heading text-3xl font-bold text-white mb-4">
+            <h2 className="font-heading text-3xl font-bold text-foreground mb-4">
               Ready to Begin Your Wellness Journey?
             </h2>
-            <p className="font-body text-lg text-white/90 mb-8">
+            <p className="font-body text-lg text-muted-foreground mb-8">
               Join our community of wellness seekers and discover the transformative 
               power of holistic healing at Mother Earth Yoga Sanctuary.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button 
                 size="lg"
-                variant="secondary"
-                className="bg-white text-teal hover:bg-white/90 font-semibold px-8 shadow-soft"
+                asChild
+                className="bg-terracotta hover:bg-terracotta/90 text-terracotta-foreground font-semibold px-8 shadow-soft"
               >
-                Book Your First Session
+                <Link to="/contact">Book Your First Session</Link>
               </Button>
               <Button 
                 size="lg"
                 variant="outline"
-                className="border-2 border-white text-white hover:bg-white hover:text-teal font-semibold px-8"
+                asChild
+                className="border-2 border-teal text-teal hover:bg-teal hover:text-teal-foreground font-semibold px-8"
               >
-                Contact Us Today
+                <Link to="/contact">Contact Us Today</Link>
               </Button>
             </div>
           </div>

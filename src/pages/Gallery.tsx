@@ -2,6 +2,7 @@ import { useState } from "react";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Camera, Filter, Grid, Eye } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Gallery = () => {
   const [activeFilter, setActiveFilter] = useState("All");
@@ -224,16 +225,18 @@ const Gallery = () => {
               <Button 
                 size="lg"
                 variant="secondary"
+                asChild
                 className="bg-white text-teal hover:bg-white/90 font-semibold px-8 shadow-soft"
               >
-                Book a Visit
+                <Link to="/contact">Book a Visit</Link>
               </Button>
               <Button 
                 size="lg"
                 variant="outline"
+                asChild
                 className="border-2 border-white text-white hover:bg-white hover:text-teal font-semibold px-8"
               >
-                Contact Us
+                <Link to="/contact">Contact Us</Link>
               </Button>
             </div>
           </div>
